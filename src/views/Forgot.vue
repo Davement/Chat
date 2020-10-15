@@ -5,7 +5,7 @@
         <img src="../assets/Logo.png" alt="" />
       </div>
       <div class="content">
-        <h1>Login</h1>
+        <h1>Reset</h1>
         <form @submit="submitForm">
           <vs-input
             block
@@ -18,25 +18,12 @@
             style="margin: 1em"
           >
             <template #icon>
-              <i class="bx bx-envelope"></i>
-            </template>
-          </vs-input>
-          <vs-input
-            block
-            color="#8978e2"
-            border
-            type="password"
-            v-model="password"
-            placeholder="Password"
-            style="margin: 1em"
-          >
-            <template #icon>
-              <i class="bx bx-lock-open-alt"></i>
+              <i class="bx bx-user"></i>
             </template>
           </vs-input>
           <p class="error">{{ error }}</p>
-          <vs-button block>LOGIN</vs-button>
-          <p @click="redirect('/forgot')">Forgot your password?</p>
+          <vs-button block>RESET</vs-button>
+          <p @click="redirect('/login')">Login?</p>
           <p @click="redirect('/register')">
             New to <span>CHAT</span>?
           </p>

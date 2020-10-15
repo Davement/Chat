@@ -5,8 +5,22 @@
         <img src="../assets/Logo.png" alt="" />
       </div>
       <div class="content">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form @submit="submitForm">
+          <vs-input
+            block
+            autofocus
+            color="#8978e2"
+            border
+            type="name"
+            v-model="name"
+            placeholder="Name"
+            style="margin: 1em"
+          >
+            <template #icon>
+              <i class="bx bx-user"></i>
+            </template>
+          </vs-input>
           <vs-input
             block
             autofocus
@@ -35,11 +49,8 @@
             </template>
           </vs-input>
           <p class="error">{{ error }}</p>
-          <vs-button block>LOGIN</vs-button>
-          <p @click="redirect('/forgot')">Forgot your password?</p>
-          <p @click="redirect('/register')">
-            New to <span>CHAT</span>?
-          </p>
+          <vs-button block>REGISTER</vs-button>
+          <p @click="redirect('/login')">Already a account?</p>
         </form>
       </div>
     </div>
@@ -51,9 +62,10 @@
 import userService from "../services/userService";
 
 export default {
-  name: "Login",
+  name: "Register",
   data() {
     return {
+      name: "",
       email: "",
       password: "",
       error: null,
@@ -65,13 +77,13 @@ export default {
     },
     async submitForm(event) {
       event.preventDefault();
-      let request = await userService.auth(this.email, this.password);
-      if (request.token) {
-        this.$cookies.set("token", request.token);
-        this.$router.push("/");
-      } else {
-        this.error = "Wrong email or password!";
-      }
+      let request = await userService.addUser(
+        this.user,
+        this.email,
+        this.password
+      );
+      this.$cookies.set("token", request.id);
+      this.$router.push("/");
     },
   },
   computed: {},
