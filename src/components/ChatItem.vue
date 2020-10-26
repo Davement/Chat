@@ -18,10 +18,10 @@
 
 <script>
 export default {
-  name: "ChatItem",
+  name: 'ChatItem',
   props: {
     user: Object,
-    lastMessage: Object,
+    lastMessage: Object
   },
   methods: {
     // getSendDay() {
@@ -55,49 +55,52 @@ export default {
     // },
     getSendTime() {
       let days = [
-        "sunday",
-        "monday",
-        "tuesday",
-        "wednesday",
-        "thursday",
-        "friday",
-        "saturday",
-      ];
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday'
+      ]
 
       console.log(this.lastMessage.createdAt.getDate())
       switch (this.lastMessage.createdAt.getDate()) {
         case new Date().getDate():
-          return `${this.lastMessage.createdAt.getHours()}:${this.lastMessage.createdAt.getMinutes()}`;
+          return `${this.lastMessage.createdAt.getHours()}:${this.lastMessage.createdAt.getMinutes()}`
 
         case new Date().getDate() - 1:
-          return "Yesterday";
+          return 'Yesterday'
 
         case new Date().getDate() - 2:
-          return days[this.lastMessage.createdAt.getDay()];
+          return days[this.lastMessage.createdAt.getDay()]
 
         case new Date().getDate() - 3:
-          return days[this.lastMessage.createdAt.getDay()];
+          return days[this.lastMessage.createdAt.getDay()]
 
         case new Date().getDate() - 4:
           console.log(this.lastMessage.createdAt.getDay())
-          return days[this.lastMessage.createdAt.getDay()];
+          return days[this.lastMessage.createdAt.getDay()]
 
         case new Date().getDate() - 5:
-          return days[this.lastMessage.createdAt.getDay()];
+          return days[this.lastMessage.createdAt.getDay()]
 
         case new Date().getDate() - 6:
-          return days[this.lastMessage.createdAt.getDay()];
+          return days[this.lastMessage.createdAt.getDay()]
 
-        default: 
-          if (this.lastMessage.createdAt.getFullYear() === new Date().getFullYear()) {
+        default:
+          if (
+            this.lastMessage.createdAt.getFullYear() ===
+            new Date().getFullYear()
+          ) {
             return `${this.lastMessage.createdAt.getDate()}-${this.lastMessage.createdAt.getMonth()}`
           } else {
             return `${this.lastMessage.createdAt.getDate()}-${this.lastMessage.createdAt.getMonth()}-${this.lastMessage.createdAt.getFullYear()}`
           }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>

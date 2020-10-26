@@ -7,5 +7,9 @@ export default {
 
     auth(email, password) {
         return client.auth(email, password);
+    },
+
+    getUserById(id){
+        return client.getUserById(id);
     }
 }
