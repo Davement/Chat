@@ -1,7 +1,7 @@
 <template>
   <div class="chatItem">
     <vs-avatar circle size="60" badge badge-color="success">
-      <img :src="user.img" alt=""/>
+      <img :src="user.img" alt="" />
     </vs-avatar>
     <div>
       <h3>{{ user.name }}</h3>
@@ -16,12 +16,12 @@
 
 <script>
 export default {
-  name: "ChatItem",
+  name: 'ChatItem',
   props: {
     user: Object,
-    lastMessage: Object,
-  },
-};
+    lastMessage: Object
+  }
+}
 </script>
 
 <style scoped>

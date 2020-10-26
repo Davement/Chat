@@ -37,9 +37,7 @@
           <p class="error">{{ error }}</p>
           <vs-button block>LOGIN</vs-button>
           <p @click="redirect('/forgot')">Forgot your password?</p>
-          <p @click="redirect('/register')">
-            New to <span>CHAT</span>?
-          </p>
+          <p @click="redirect('/register')">New to <span>CHAT</span>?</p>
         </form>
       </div>
     </div>
@@ -48,41 +46,42 @@
 
 <script>
 // import testService from '../services/test';
-import userService from "../services/userService";
+import userService from '../services/userService'
 
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
-      email: "",
-      password: "",
-      error: null,
-    };
+      email: '',
+      password: '',
+      error: null
+    }
   },
   methods: {
     redirect(route) {
-      this.$router.push(route);
+      this.$router.push(route)
     },
     async submitForm(event) {
-      event.preventDefault();
-      let request = await userService.auth(this.email, this.password);
-      if (request.token) {
-        this.$cookies.set("token", request.token);
-        this.$router.push("/");
-      } else {
-        this.error = "Wrong email or password!";
+      event.preventDefault()
+      try {
+        let request = await userService.auth(this.email, this.password);
+        this.$cookies.set('token', request.token)
+        this.$router.push('/')
+      } catch (err) {
+        console.log(err);
+        this.error = 'Wrong email or password!';
       }
-    },
+    }
   },
-  computed: {},
-};
+  computed: {}
+}
 </script>
 
 <style scoped>
 .login {
   width: 100%;
   height: 100%;
-  background-image: url("../assets/loginLine.svg");
+  background-image: url('../assets/loginLine.svg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -149,7 +148,7 @@ export default {
   color: red;
 }
 
-.content form input[type="submit"] {
+.content form input[type='submit'] {
   cursor: pointer;
   background-color: #8978e2;
   color: white;
