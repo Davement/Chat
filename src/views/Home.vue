@@ -5,25 +5,17 @@
     </header>
     <main>
     </main>
-    <aside>
-    </aside>
-    <ChatItem v-bind:lastMessage="lastMessage" v-bind:user="user" />
+    <Chats/>
   </div>
 </template>
 
 <script>
-import ChatItem from "@/components/ChatItem.vue";
+import Chats from "@/components/Chats.vue";
 
 export default {
   name: "Home",
   components: {
-    ChatItem,
-  },
-  data() {
-    return {
-      lastMessage: { message: "Hallo ik ben dik", createdAt: new Date() },
-      user: { name: "Pieter Hendriks", img: require('@/assets/img/profile.png') },
-    };
+    Chats,
   },
 };
 </script>
